@@ -28,7 +28,7 @@ class MyHomePage extends StatelessWidget {
 return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Smart Waroeng',
+          'SMart - Sita Mart',
         ),
       ),
       body: SingleChildScrollView(
@@ -77,6 +77,7 @@ class ShopCard extends StatelessWidget {
 
   const ShopCard(this.item, {super.key}); // Constructor
 
+  //Pengerjaan Bonus
   Color getButtonColor(ShopItem item) {
     if (item.name == "Lihat Item") {
       return Color.fromARGB(255, 3, 11, 121); // Ubah warna sesuai kebutuhan
