@@ -50,13 +50,21 @@ Text: Widget berisi teks untuk menampilkan teks
 3. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
 Jawab :
 Membuat program Flutter dengan nama "smart_mobile" dalam direktori kerja "smart_mobile."
+
 Membuat repositori GitHub dengan nama "smart_mobile" dan menjalankan perintah `git init` pada root folder proyek.
+
 Melakukan `git add`, `git commit`, dan `git push` untuk mengunggah proyek Flutter sementara ke GitHub.
+
 Merapihkan struktur proyek dengan membuat file "menu.dart."
+
 Mengubah warna dan sifat widget pada halaman menu menjadi stateless.
+
 Membuat card untuk tombol "Lihat Item," "Tambah Item," dan "Logout."
+
 Membuat widget "build" dan mengatur agar snackbar muncul saat ketiga tombol sebelumnya ditekan dengan menggunakan `ScaffoldMessenger.of(context)`, hingga pesan teks muncul saat tombol ditekan.
+
 Membuat file README yang berisi jawaban untuk pertanyaan.
+
 Menjalankan perintah `git add`, `git commit`, dan `git push` untuk mengunggah perubahan ke GitHub.
 
 
