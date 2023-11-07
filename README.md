@@ -11,13 +11,13 @@ Kelas   : PBP B
 Jawab : 
 Dalam pengembangan aplikasi Flutter, perbedaan utama antara stateless widget dan stateful widget terletak pada kemampuan mereka untuk mengelola dan mengubah keadaan (state) dari widget tersebut. Berikut perbedaan utama antara keduanya:
 
-Stateless Widget:
+-- Stateless Widget:
 
 Stateless widget adalah widget yang keadaannya tidak dapat berubah (immutable) setelah dibuat.
 Stateless widget cocok digunakan untuk bagian aplikasi yang tidak memerlukan perubahan keadaan atau perubahan data yang sering.
 Contoh penggunaan stateless widget adalah menampilkan teks statis, ikon, gambar, atau elemen-elemen UI yang tidak memerlukan pembaruan berdasarkan perubahan data.
 
-Stateful Widget:
+-- Stateful Widget:
 
 Stateful widget adalah widget yang dapat mengubah keadaannya (mutable) sepanjang waktu.
 Stateful widget digunakan ketika Anda perlu memperbarui tampilan atau respons widget berdasarkan perubahan data atau interaksi pengguna.
@@ -28,14 +28,23 @@ Contoh penggunaan stateful widget meliputi formulir yang memerlukan pengguna unt
 Jawab :
 
 AppBar: Widget bar yang menampilkan judul aplikasi "SMart - Sita Mart"
+
 SingleChildScrollView: Wrapper widget yang memungkinkan kontennya dapat di-scroll
+
 Padding: Widget yang memberikan margin dari semua sisi
+
 Column: Digunakan untuk menyusun children secara vertikal
+
 Text: Untuk menampilkan teks (PBP Shop) dengan gaya penampilan yang sesuai
+
 Material: Memberikan latar belakang berwarna
+
 InkWell: Membuat area di dalamnya responsif terhadap sentuhan
+
 Container: Widget yang mengelilingi ikon dan teks
+
 Icon: Menampilkan ikon yang sesuai
+
 Text: Widget berisi teks untuk menampilkan teks
 
 3. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
