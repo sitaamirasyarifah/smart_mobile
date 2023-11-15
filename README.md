@@ -11,13 +11,13 @@ Kelas   : PBP B
 Jawab : 
 Dalam pengembangan aplikasi Flutter, perbedaan utama antara stateless widget dan stateful widget terletak pada kemampuan mereka untuk mengelola dan mengubah keadaan (state) dari widget tersebut. Berikut perbedaan utama antara keduanya:
 
-Stateless Widget:
+-- Stateless Widget:
 
 Stateless widget adalah widget yang keadaannya tidak dapat berubah (immutable) setelah dibuat.
 Stateless widget cocok digunakan untuk bagian aplikasi yang tidak memerlukan perubahan keadaan atau perubahan data yang sering.
 Contoh penggunaan stateless widget adalah menampilkan teks statis, ikon, gambar, atau elemen-elemen UI yang tidak memerlukan pembaruan berdasarkan perubahan data.
 
-Stateful Widget:
+-- Stateful Widget:
 
 Stateful widget adalah widget yang dapat mengubah keadaannya (mutable) sepanjang waktu.
 Stateful widget digunakan ketika Anda perlu memperbarui tampilan atau respons widget berdasarkan perubahan data atau interaksi pengguna.
@@ -28,26 +28,43 @@ Contoh penggunaan stateful widget meliputi formulir yang memerlukan pengguna unt
 Jawab :
 
 AppBar: Widget bar yang menampilkan judul aplikasi "SMart - Sita Mart"
+
 SingleChildScrollView: Wrapper widget yang memungkinkan kontennya dapat di-scroll
+
 Padding: Widget yang memberikan margin dari semua sisi
+
 Column: Digunakan untuk menyusun children secara vertikal
+
 Text: Untuk menampilkan teks (PBP Shop) dengan gaya penampilan yang sesuai
+
 Material: Memberikan latar belakang berwarna
+
 InkWell: Membuat area di dalamnya responsif terhadap sentuhan
+
 Container: Widget yang mengelilingi ikon dan teks
+
 Icon: Menampilkan ikon yang sesuai
+
 Text: Widget berisi teks untuk menampilkan teks
 
 3. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
 Jawab :
 Membuat program Flutter dengan nama "smart_mobile" dalam direktori kerja "smart_mobile."
+
 Membuat repositori GitHub dengan nama "smart_mobile" dan menjalankan perintah `git init` pada root folder proyek.
+
 Melakukan `git add`, `git commit`, dan `git push` untuk mengunggah proyek Flutter sementara ke GitHub.
+
 Merapihkan struktur proyek dengan membuat file "menu.dart."
+
 Mengubah warna dan sifat widget pada halaman menu menjadi stateless.
+
 Membuat card untuk tombol "Lihat Item," "Tambah Item," dan "Logout."
+
 Membuat widget "build" dan mengatur agar snackbar muncul saat ketiga tombol sebelumnya ditekan dengan menggunakan `ScaffoldMessenger.of(context)`, hingga pesan teks muncul saat tombol ditekan.
+
 Membuat file README yang berisi jawaban untuk pertanyaan.
+
 Menjalankan perintah `git add`, `git commit`, dan `git push` untuk mengunggah perubahan ke GitHub.
 
 
