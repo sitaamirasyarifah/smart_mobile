@@ -5,7 +5,7 @@ NPM     : 2206023023
 Kelas   : PBP B
 
 <details>
-<summary>TUGAS 8</summary>
+<summary> ## TUGAS 8 </summary>
 <br>
 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
 
@@ -83,7 +83,10 @@ Setelahnya, untuk bonus: Dalam main.dart, saya membuat sebuah list untuk menyimp
 Saya juga membuat berkas lihat_item.dart yang bertujuan untuk menampilkan semua item yang telah dimasukkan oleh pengguna.
 </details>
 
-## TUGAS 7
+<details>
+<summary>## TUGAS 7 </summary>
+<br>
+
 
 1. Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
 
@@ -145,6 +148,8 @@ Membuat widget "build" dan mengatur agar snackbar muncul saat ketiga tombol sebe
 Membuat file README yang berisi jawaban untuk pertanyaan.
 
 Menjalankan perintah `git add`, `git commit`, dan `git push` untuk mengunggah perubahan ke GitHub.
+</details>
+
 
 
 A new Flutter project.
