@@ -4,6 +4,85 @@ Nama    : Sita Amira Syarifah
 NPM     : 2206023023
 Kelas   : PBP B
 
+<details>
+<summary>TUGAS 8</summary>
+<br>
+1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+
+Jawab :
+Navigator.push() digunakan untuk melompat ke halaman baru di atas urutan halaman yang ada. Biasanya, ini berguna saat ingin tetap menyimpan jejak perjalanan navigasi, seperti ketika berpindah dari halaman utama ke halaman detail. Misalnya, saat pengguna memilih item dari daftar di halaman utama, kita bisa menggunakan Navigator.push() untuk menampilkan detail dari item tersebut. Setelah selesai, pengguna bisa kembali ke halaman utama dengan menekan tombol kembali.
+
+Navigator.pushReplacement() digunakan untuk menggantikan layar saat ini dengan layar yang baru di urutan navigasi. Ini berguna ketika kita tidak ingin pengguna kembali ke layar sebelumnya, contohnya setelah berhasil proses login. Misalnya, setelah pengguna berhasil masuk pada layar login, kita bisa menggunakan Navigator.pushReplacement() untuk langsung membawa mereka ke halaman utama. Dengan begitu, kita dapat mencegah pengguna untuk kembali ke layar login dengan menekan tombol kembali.
+
+
+2.Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+
+Jawab :
+Column dan Row
+Kegunaan: Mengelola widget secara vertikal (Column) dan horizontal (Row). 
+Penerapan: Ideal digunakan untuk mengatur tata letak linier seperti formulir atau toolbar.
+
+Stack
+Kegunaan: Mengizinkan tumpukan widget satu di atas yang lain. 
+Penerapan: Cocok untuk overlay, seperti menempatkan teks di atas gambar.
+
+Container
+Kegunaan: Widget serbaguna untuk membungkus, mendekorasi, dan menentukan ukuran.
+Penerapan: Berguna saat Anda memerlukan kotak dengan padding, margin, latar belakang, atau perubahan bentuk.
+
+GridView
+Kegunaan: Menampilkan widget dalam grid yang dapat di-scroll. 
+Penerapan: Cocok digunakan untuk galeri foto atau daftar pilihan produk.
+
+ListView
+Kegunaan: Menampilkan daftar item yang bisa di-scroll. 
+Penerapan: Berguna untuk daftar email, berita, atau pengaturan.
+
+Flex dan Expanded
+Kegunaan: Memberikan fleksibilitas dalam tata letak dengan membagi ruang. 
+Penerapan: Berguna saat Anda ingin widget memiliki ukuran relatif terhadap ruang yang tersedia.
+
+3.Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+
+Jawab :
+Pada tugas ini saya menggunakan TextField karena hanya perlu input teks, seperti nama produk, jumlah produk, deskripsi, dll.
+
+
+4.Bagaimana penerapan clean architecture pada aplikasi Flutter?
+
+Jawab : 
+Clean Architecture mengatur aplikasi menjadi beberapa lapisan:
+
+Presentation Layer: Menangani UI dan penggunaan Widget. Ini harus memiliki logika tampilan minimal.
+Business Logic Layer (BLoC)/State Management: Mengelola state dan logika bisnis aplikasi.
+Domain Layer: Berisi aturan bisnis dan entitas.
+Data Layer: Mengatur API, penyimpanan lokal, dan repositori yang mengatur data.
+
+Langkah-langkah penerapannya:
+
+Memisahkan kode ke dalam lapisan yang telah disebutkan.
+Menggunakan BLoC atau provider untuk manajemen status.
+Menerapkan prinsip Dependency Inversion antara lapisan-lapisan yang ada.
+Memastikan komunikasi antara lapisan-lapisan tersebut bersih dan terstruktur.
+
+
+5.Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
+Jawab :
+
+Pertama, saya membuat sebuah halaman formulir bernama smart_mobile_form.dart yang akan terbuka saat tombol "Tambah Item" ditekan. Di halaman ini, terdapat tiga elemen input yang menggunakan TextFormField dengan nama name, amount, dan description.
+
+Selanjutnya, menambahkan tombol save pada smart_mobile_form.dart yang hanya akan aktif (mengaktifkan aksi) saat semua elemen field terisi.
+
+Setelah itu, menerapkan sebuah pop-up yang akan menampilkan informasi dari input pengguna setelah tombol save berhasil ditekan.
+
+Kemudian, membuat file baru bernama left_drawer.dart yang akan berfungsi sebagai navigasi "Halaman Utama" untuk menuju ke homePage dan "Tambah Item" untuk membuka halaman smart_mobile_form.dart, memungkinkan pengguna untuk menambahkan item.
+
+Setelahnya, untuk bonus: Dalam main.dart, saya membuat sebuah list untuk menyimpan semua model yang sudah dibuat sebagai instansi. Saya juga menyediakan file model.dart untuk membuat model tersebut.
+
+Saya juga membuat berkas lihat_item.dart yang bertujuan untuk menampilkan semua item yang telah dimasukkan oleh pengguna.
+</details>
+
 ## TUGAS 7
 
 1. Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
