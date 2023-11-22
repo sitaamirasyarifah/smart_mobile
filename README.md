@@ -4,6 +4,177 @@ Nama    : Sita Amira Syarifah
 NPM     : 2206023023
 Kelas   : PBP B
 
+
+<details>
+<summary> <b> WEEK 09 </b> </summary>
+
+## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+Iya, kita mampu mengakses data JSON tanpa perlu membuat model terlebih dahulu. Mengambil data JSON tanpa model berarti kita langsung memproses struktur data dasarnya menggunakan bahasa pemrograman yang digunakan.
+
+Keunggulan dari Pendekatan Tanpa Model:
+
+Fleksibilitas: Memudahkan penanganan data yang memiliki struktur yang tidak tetap atau sering berubah.
+Pengembangan Cepat: Mengurangi kebutuhan perancangan dan implementasi model sebelumnya.
+Simplicity: Cocok untuk skenario sederhana di mana struktur data tidak terlalu kompleks atau tidak memerlukan validasi khusus.
+Keunggulan dari Penggunaan Model:
+
+Validasi Data: Model membantu dalam memvalidasi data dan memastikan kesesuaian data yang diterima dengan yang diharapkan.
+Konsistensi: Mempermudah pemeliharaan kode, khususnya dalam proyek besar, karena semua interaksi data mengikuti struktur yang telah ditetapkan.
+Pemeliharaan Kode: Mempermudah pemeliharaan dan perubahan kode di masa mendatang karena perubahan pada struktur data hanya perlu dilakukan di satu tempat (model).
+Dokumentasi: Model berperan sebagai bentuk dokumentasi, memudahkan pengembang lain untuk memahami struktur data.
+Lebih disarankan untuk membangun model terlebih dahulu sehingga data JSON yang akan diolah sudah sesuai dengan sintaks pemrograman yang benar.
+<br>
+
+
+
+## Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+Fungsi utama dari `CookieRequest` adalah mengelola cookie pada saat melakukan permintaan HTTP. Ini mencakup pengiriman cookie saat permintaan HTTP dikirimkan ke server serta penyimpanan cookie yang diterima dari server. Keberadaan ini krusial untuk memastikan konsistensi sesi pengguna dalam konteks penggunaan aplikasi, seperti saat proses autentikasi atau ketika menyesuaikan preferensi pengguna yang telah disimpan.
+
+Penggunaan instance `CookieRequest` secara universal ke semua komponen dalam aplikasi Flutter memiliki kepentingan besar karena memastikan manajemen cookie dilakukan secara seragam di seluruh aplikasi. Dengan pendekatan ini, setiap permintaan yang dilakukan dari berbagai bagian aplikasi akan mengakses informasi cookie yang sama, memastikan bahwa pengguna tetap terautentikasi dan preferensi mereka tetap konsisten di seluruh aplikasi. Selain itu, pendekatan ini juga membantu menyederhanakan arsitektur kode dengan mengkonsolidasikan logika manajemen cookie, mengurangi duplikasi kode dan potensi kesalahan yang mungkin terjadi.
+
+
+## Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+1. GET Request dikirimkan ke url supaya kita mendapatkan JSON yang berisi list of product.
+```   var url = Uri.parse('http://127.0.0.1:8000/json/');
+    var response = await http.get(
+      url,
+      headers: {"Content-Type": "application/json"},
+    );
+```
+
+2. Mengubah http respons body agar sesuai dengan bentuk JSON
+```
+var data = jsonDecode(utf8.decode(response.bodyBytes)); 
+```
+3. Dari data JSON tersebut, objek product dibuat dan disimpan pada list_product.
+```
+List<Product> list_product = [];
+    for (var d in data) {
+      if (d != null) {
+        list_product.add(Product.fromJson(d));
+      }
+    }
+    return list_product;
+```
+4. Seluruh item yang sudah ada ditampilkan dengan ListView.builder() dan masing-masingnya ditampilkan dalam bentuk Card. Jika card suatu product diklik, maka akan pergi ke halaman details
+```
+ return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                var barang = snapshot.data![index].fields; // Assuming fields has the necessary properties
+                return Card(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailItemPage(fields: barang),
+                        ),
+                      );
+                    },
+```
+
+## Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+1. Membangun objek request dengan CookieRequest lalu meminta input username dan password.
+```
+    final request = context.watch<CookieRequest>();
+```
+```
+            TextField(
+              controller: _usernameController,
+              decoration: const InputDecoration(
+                labelText: 'Username',
+              ),
+            ),
+```
+```
+            TextField(
+              controller: _passwordController,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+              ),
+              obscureText: true,
+            ),
+```
+2. Melakukan login request supaya bisa  mengirim data username dan password ke url tujuan.
+```
+                final response =
+                    await request.login("http://127.0.0.1:8000/auth/login/", {
+                  'username': username,
+                  'password': password,
+                });
+```
+3. App akan memberikan respons sesuai login request. Kalau berhasil, maka user akan menuju halaman MyHomePage(). Sedangkan, kalau gagal akan muncul AlertDialog().
+
+```
+               if (request.loggedIn) {
+                  String message = response['message'];
+                  String uname = response['username'];
+                  // ignore: use_build_context_synchronously
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyHomePage()),
+                  );
+                  // ignore: use_build_context_synchronously
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(SnackBar(
+                        content: Text("$message Selamat datang, $uname.")));
+                } else {
+                  // ignore: use_build_context_synchronously
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('Login Gagal'),
+                      content: Text(response['message']),
+                      actions: [
+                        TextButton(
+                          child: const Text('OK'),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    ),
+```
+## Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+1. `LeftDrawer`: Suatu komponen kustom (didefinisikan di luar kode yang disediakan) yang mungkin dipakai untuk menampilkan drawer navigasi di sisi kiri.
+2. `FutureBuilder`: Sebuah widget yang digunakan untuk membangun widget berdasarkan hasil terkini dari Future, seperti menampilkan data yang diperoleh dari internet.
+3. `Center`: Widget yang memposisikan child widgetnya tepat di tengah-tengah dari parent widget.
+4. `CircularProgressIndicator`: Widget yang menampilkan indikator loading berupa lingkaran yang berputar.
+5. `ListView.builder`: Widget yang digunakan untuk membuat daftar yang bisa di-scroll, dimana item-itemnya dibangun secara dinamis.
+6. `SizedBox`: Widget yang memberikan ruang atau jarak antara widget lain.
+7. `ElevatedButton`: Widget yang menampilkan tombol dengan tampilan menonjol, sering digunakan untuk aksi utama dalam sebuah form.
+8. `Navigator`: Digunakan untuk melakukan navigasi antar halaman dalam aplikasi.
+9. `AlertDialog`: Widget yang menampilkan dialog untuk memberikan informasi atau konfirmasi kepada pengguna.
+10. `TextButton`: Widget yang menampilkan tombol berupa teks, umumnya digunakan dalam dialog.
+11. `Provider`: Paket yang digunakan untuk mengelola state dan akses data melintasi berbagai widget.
+12. `CookieRequest` (dari `pbp_django_auth`): Komponen yang digunakan untuk mengatur autentikasi serta permintaan HTTP dengan menggunakan cookie, terutama dalam konteks proses login.
+
+Selebihnya sama seperti  minggu lalu.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+1. Pembuatan aplikasi baru dalam proyek Django yang dinamai authentication.
+2. Pemasangan library corsheaders dan konfigurasinya pada pengaturan di proyek Django.
+3. Penyusunan metode untuk proses login di dalam views.py pada aplikasi authentication.
+4. Pembuatan metode untuk proses logout di dalam views.py pada aplikasi authentication.
+5. Pembuatan metode create_product_flutter di dalam views.py pada aplikasi utama.
+6. Pengaturan path untuk semua metode yang baru dibuat.
+7. Instalasi semua paket baru yang diperlukan untuk tugas minggu ini, seperti provider, pbp_django_auth, dan http.
+8. Pembuatan login.dart dan penyesuaian main.dart agar masuk pertama kali ke LoginPage().
+9. Pembuatan product.dart sebagai model.
+10. Pengizinan aplikasi Flutter untuk mengakses internet.
+11. Pembuatan list_product.dart dengan pengambilan data dari web yang telah di-deploy.
+12. Penyesuaian kembali left drawer.
+13. Koneksi form dengan CookieRequest.
+14. Penyesuaian kembali pengisian form dengan jsonEncode.
+15. Penyesuaian kembali card.dart dengan CookieRequest untuk dapat melakukan logout menggunakan metode yang telah dibangun sebelumnya.
+16. Melakukan langkah add-commit-push ke GitHub.
+
+
+
+</details>
+
 <details>
 <summary> ## TUGAS 8 </summary>
 <br>
@@ -166,3 +337,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+
