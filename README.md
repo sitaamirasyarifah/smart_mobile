@@ -6,7 +6,7 @@ Kelas   : PBP B
 
 
 <details>
-<summary> <b> WEEK 09 </b> </summary>
+<summary> <b> TUGAS 9 </b> </summary>
 
 ## Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
 Iya, kita mampu mengakses data JSON tanpa perlu membuat model terlebih dahulu. Mengambil data JSON tanpa model berarti kita langsung memproses struktur data dasarnya menggunakan bahasa pemrograman yang digunakan.
@@ -176,7 +176,7 @@ Selebihnya sama seperti  minggu lalu.
 </details>
 
 <details>
-<summary> ## TUGAS 8 </summary>
+<summary> <b> TUGAS 8 </b> </summary>
 <br>
 1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
 
@@ -255,7 +255,7 @@ Saya juga membuat berkas lihat_item.dart yang bertujuan untuk menampilkan semua 
 </details>
 
 <details>
-<summary>## TUGAS 7 </summary>
+<summary> <b> TUGAS 7 </b> </summary>
 <br>
 
 
